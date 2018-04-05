@@ -1,6 +1,16 @@
-FROM ubuntu:14.04
+FROM alpine:3.7 
 MAINTAINER Decibel Automation Team <devops@thedecibelgroup.com>
 
-RUN apt-get update && apt-get install -y libssl-dev libffi-dev python-pip python-jinja2 libyaml-dev python-dev mysql-client && apt-get clean
+RUN apk add --no-cache \
+       openssl-dev \
+       libffi-dev \
+       py-pip \
+       py-jinja2 \
+       yaml-dev \
+       python-dev \
+       gcc \
+       make \
+       musl-dev \
+       mysql-client
 RUN pip install --upgrade setuptools
-RUN pip install ansible==2.3.2.0
+RUN pip install ansible==2.4.4.0
